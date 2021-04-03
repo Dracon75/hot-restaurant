@@ -14,7 +14,7 @@ app.use(express.json());
 
 // Reserved Tables (DATA)
 
-const reservations = [];
+const reservations = [{customerEmail: "zzzz"}];
 
 const waitingList = [];
 
@@ -23,9 +23,9 @@ const waitingList = [];
 // Basic routing stuff
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'home.html')));
 
-app.get('/make', (req, res) => res.sendFile(path.join(__dirname, 'make.html')));
+app.get('/tables', (req, res) => res.sendFile(path.join(__dirname, 'table.html')));
 
-app.get('/view', (req, res) => res.sendFile(path.join(__dirname, 'view.html')));
+app.get('/reserve', (req, res) => res.sendFile(path.join(__dirname, 'reserve.html')));
 
 // Displays all reservations
 app.get('/api/reservations', (req, res) => res.json(reservations));

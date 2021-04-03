@@ -8,7 +8,9 @@
   <!-- Latest compiled and minified CSS & JS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script type="text/javascript" src="http://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=UMa3MwAWxkP4ZJ54vLEC72O8qtkxYyOLlls_BXG5EkDnBNjsWo5amBSi8BnGuiHfMEl5M6EwQ7evuxTlGbfv-Q" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="http://me.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cDovL2hvdC1yZXN0YXVyYW50LWZzZi5oZXJva3VhcHAuY29tL3RhYmxlcw"/><script src="https://code.jquery.com/jquery.js"></script>
+  <!-- <script type="text/javascript" src="http://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=UMa3MwAWxkP4ZJ54vLEC72O8qtkxYyOLlls_BXG5EkDnBNjsWo5amBSi8BnGuiHfMEl5M6EwQ7evuxTlGbfv-Q" charset="UTF-8"></script> -->
+  <!-- <link rel="stylesheet" crossorigin="anonymous" href="http://me.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cDovL2hvdC1yZXN0YXVyYW50LWZzZi5oZXJva3VhcHAuY29tL3RhYmxlcw"/> -->
+  <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 </head>
@@ -64,5 +66,41 @@
     </footer>
 
   </div>
+<script> 
+let tableListEl = document.getElementById("tableList");
+let waitingListEl = document.getElementById("waitList");
 
+fetch("/api/reservations")
+
+    .then(function (response) {
+        if (!response.ok) {
+            throw response.json();
+        }
+        console.log(response);
+        return response.json();
+    })
+    .then(function(response) {
+      generateCard(response, "reservation")
+    })
+    .catch(function (error) {
+        console.error(error);
+    });
+
+function generateCard(data, whichdata) {
+    for (let index = 0; index < data.length; index++) {
+
+        tableListEl.append(  `
+        <li class="list-group-item mt-4">
+            <h2>Table #${index + 1}</h2>
+            <hr>
+            <h2>ID:  ${data[index].customerID}</h2>
+            <h2>Name:  ${data[index].customerName}</h2>
+            <h2>Email: ${data[index].customerEmail}</h2>
+            <h2>Phone:  ${data[index].phoneNumber}</h2>
+        </li>
+        `)
+    }
+    
+}
+</script>
 </body>
