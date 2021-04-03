@@ -61,8 +61,8 @@ app.post('/api/reservation', (req, res) => {
 
   // Using a RegEx Pattern to remove spaces from newCharacter
   // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-  newReservation.custonerName = newReservation.custonerName.replace(/\s+/g, '').toLowerCase();
-  newReservation.custonerEmail = newReservation.custonerEmail.replace(/\s+/g, '').toLowerCase();
+  newReservation.customerName = newReservation.customerName.replace(/\s+/g, '').toLowerCase();
+  newReservation.customerEmail = newReservation.customerEmail.replace(/\s+/g, '').toLowerCase();
   console.log(newReservation);
 
   reservations.push(newReservation);
@@ -72,8 +72,8 @@ app.post('/api/reservation', (req, res) => {
 
     // Using a RegEx Pattern to remove spaces from newCharacter
     // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-    newWaitingList.custonerName = newWaitingList.custonerName.replace(/\s+/g, '').toLowerCase();
-    newWaitingList.custonerEmail = newWaitingList.custonerEmail.replace(/\s+/g, '').toLowerCase();
+    newWaitingList.customerName = newWaitingList.customerName.replace(/\s+/g, '').toLowerCase();
+    newWaitingList.customerEmail = newWaitingList.customerEmail.replace(/\s+/g, '').toLowerCase();
     console.log(newWaitingList);
   
     waitingList.push(newWaitingList);
